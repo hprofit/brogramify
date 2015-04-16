@@ -1,22 +1,15 @@
-Ponify
+Brogramify
 =========
 
-A small utility for converting certain strings to pony phrases or words.
-This was a test to get into writing an npm plugin.
+A small utility for inserting comments into your JS source files, bro!
 
 ## Installation
 
-  npm install ponify --save
+  npm install brogramify --save
 
 ## Usage
 
-  var pony = require('ponify')
-      ponify = ponify.ponify;
 
-  var string = 'Hey there, everybody!',
-      ponied = ponify(string);
-
-  console.log('string', string, 'ponified', ponied);
 
 ## Tests
 
@@ -29,4 +22,4 @@ Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Release History
 
-* 0.1.0 Initial release
+* 1.0.0 Initial release
