@@ -3,15 +3,15 @@ var fs = require('fs'),
 
 module.exports = {
     bromments: [
-        '// hey bro!',
-        '// bro, time for some gains',
-        '// this code is so tight, bro!',
-        '// BROTACULAR!',
-        '// you\'re the broest bro I know, bro',
-        '// good one, bro!',
-        '// time for some suds, bro',
-        '// cool story, bro!',
-        '// almost as awesome as my K/D ratio in CoD, bro!'
+        "// hey bro!",
+        "// bro, time for some gains",
+        "// this code is so tight, bro!",
+        "// BROTACULAR!",
+        "// you're the broest bro I know, bro",
+        "// good one, bro!",
+        "// time for some suds, bro",
+        "// cool story, bro!",
+        "// almost as awesome as my K/D ratio in CoD, bro!"
     ],
     countLeadingSpaces: function (str) {
         return str.match(/^(\s*)/)[1].length;
@@ -81,19 +81,31 @@ module.exports = {
         var self = this;
 
         fs.exists(fileName, function (exists) {
-            if (exists) {
-                fs.stat(fileName, function (error, stats) {
-                    fs.open(fileName, "r", function (error, fd) {
-                        var buffer = new Buffer(stats.size);
-                        fs.read(fd, buffer, 0, buffer.length, null, function (error, bytesRead, buffer) {
-                            self._brogramify(error, bytesRead, buffer, fileName, fd);
-                        });
-                    });
-                });
-            }
-            else {
-                console.log("Failed to open file, bro!");
-            }
+            self._stat(exists, fileName);
+        });
+    },
+    _stat: function (exists, fileName) {
+        var self = this;
+        if (exists) {
+            fs.stat(fileName, function (error, stats) {
+                self._open(stats, fileName);
+            });
+        }
+        else {
+            console.log("Failed to open file, bro!");
+        }
+    },
+    _open: function (stats, fileName) {
+        var self = this;
+        fs.open(fileName, "r", function (error, fd) {
+            var buffer = new Buffer(stats.size);
+            self._read(fd, buffer, fileName);
+        });
+    },
+    _read: function(fd, buffer, fileName) {
+        var self = this;
+        fs.read(fd, buffer, 0, buffer.length, null, function (error, bytesRead, buffer) {
+            self._brogramify(error, bytesRead, buffer, fileName, fd);
         });
     },
     _brogramify: function (error, bytesRead, buffer, fileName, fd) {
@@ -104,11 +116,12 @@ module.exports = {
 
         fs.close(fd);
 
-        fs.writeFile(self.getBroFileName(fileName), self.concatLineObjArray(result), function (err) {
-            if (err) {
-                throw err;
-            }
-            console.log("It's saved, bro!");
-        });
+        fs.writeFile(self.getBroFileName(fileName), self.concatLineObjArray(result), self._finishWriteFile);
+    },
+    _finishWriteFile: function(err) {
+        if (err) {
+            throw err;
+        }
+        console.log("It's saved, bro!");
     }
 };

@@ -145,7 +145,44 @@ describe('brogramify', function () {
     });
 
     it("should open a file to brogramify", function () {
+        var spyStat = sinon.spy(),
+            spyExists = sinon.spy(),
+            emitter = new EventEmitter,
+            fileName = 'filename.js',
+            _statMock = function (e) {
+                bro._stat(e, fileName);
+            };
 
+        emitter.on('exists', spyExists);
+        emitter.emit('exists', fileName, _statMock);
+        emitter.on('_stat', spyStat);
+        emitter.emit('_stat', true, fileName);
+
+        bro.brogramify(fileName);
+
+        sinon.assert.calledOnce(spyExists);
+        sinon.assert.calledWith(spyExists, fileName, _statMock);
+
+        sinon.assert.calledOnce(spyStat);
+        sinon.assert.calledWith(spyStat, true, fileName);
+    });
+
+    it("should call _open", function () {
+        //var spyConsole = sinon.spy(console, 'log'),
+        //    spyOpen = sinon.spy(bro, '_open'),
+        //    stats = {},
+        //    fileName = 'filename.js',
+        //    message = 'Failed to open file, bro!';
+        //
+        //bro._stat(false, '');
+        //
+        //sinon.assert.calledOnce(spyConsole);
+        //sinon.assert.calledWith(spyConsole, message);
+        //
+        //bro._stat(true, fileName);
+        //
+        //sinon.assert.calledOnce(spyOpen);
+        //sinon.assert.calledWith(spyOpen, stats, fileName);
     });
 
     it("should brogramify a file and save the result", function () {
