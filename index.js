@@ -77,7 +77,7 @@ module.exports = {
     getBroFileName: function (fName) {
         return 'brogramified' + fName.charAt(0).toUpperCase() + fName.slice(1);
     },
-    brogramify: function (fileName) {
+    brogrammify: function (fileName) {
         var self = this;
 
         fs.exists(fileName, function (exists) {

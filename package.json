@@ -1,5 +1,5 @@
 {
-  "name": "brogramify",
+  "name": "brogrammify",
   "version": "1.0.0",
   "description": "Insert bro comments into your JS source files, bro!",
   "main": "index.js",
@@ -8,13 +8,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hprofit/brogramify.git"
+    "url": "https://github.com/hprofit/brogrammify.git"
   },
   "author": "Holden Profit <holdenprofit@gmail.com> (https://github.com/hprofit/)",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/hprofit/brogramify/blob/master/LICENSE-MIT"
+      "url": "https://github.com/hprofit/brogrammify/blob/master/LICENSE-MIT"
     }
   ],
   "dependencies": {
@@ -27,9 +27,9 @@
     "sinon": "^1.14.1"
   },
   "bugs": {
-    "url": "https://github.com/hprofit/brogramify/issues"
+    "url": "https://github.com/hprofit/brogrammify/issues"
   },
-  "homepage": "https://github.com/hprofit/brogramify",
+  "homepage": "https://github.com/hprofit/brogrammify",
   "keywords": [
     "bro"
   ]

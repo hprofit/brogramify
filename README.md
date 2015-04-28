@@ -5,7 +5,7 @@ A small utility for inserting comments into your JS source files, bro!
 
 ## Installation
 
-  npm install brogramify --save
+  npm install brogrammify --save
 
 ## Usage
 

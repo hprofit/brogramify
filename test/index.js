@@ -3,7 +3,7 @@ var should = require('chai').should(),
     EventEmitter = require('events').EventEmitter,
     bro = require('../index');
 
-describe('brogramify', function () {
+describe('brogrammify', function () {
     it("should count the leading white spaces on a string", function () {
         bro.countLeadingSpaces('    word').should.equal(4);
         bro.countLeadingSpaces('word').should.equal(0);
@@ -144,7 +144,7 @@ describe('brogramify', function () {
         bro.getBroFileName(fileName).should.equal('brogramifiedTestFile.js');
     });
 
-    it("should open a file to brogramify", function () {
+    it("should open a file to brogrammify", function () {
         var spyStat = sinon.spy(),
             spyExists = sinon.spy(),
             emitter = new EventEmitter,
@@ -158,7 +158,7 @@ describe('brogramify', function () {
         emitter.on('_stat', spyStat);
         emitter.emit('_stat', true, fileName);
 
-        bro.brogramify(fileName);
+        bro.brogrammify(fileName);
 
         sinon.assert.calledOnce(spyExists);
         sinon.assert.calledWith(spyExists, fileName, _statMock);
@@ -185,7 +185,7 @@ describe('brogramify', function () {
         //sinon.assert.calledWith(spyOpen, stats, fileName);
     });
 
-    it("should brogramify a file and save the result", function () {
+    it("should brogrammify a file and save the result", function () {
 
     });
 });
