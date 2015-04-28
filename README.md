@@ -1,4 +1,4 @@
-Brogramify
+Brogrammify
 =========
 
 A small utility for inserting comments into your JS source files, bro!
